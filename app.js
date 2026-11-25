@@ -40,8 +40,32 @@ document.querySelectorAll("[data-app]").forEach(b=>b.addEventListener("click",()
 $("#closeApp").onclick=closeApp;$("#appMore").onclick=()=>notify("更多设置将在后续版本开放");
 overlay.addEventListener("click",e=>{if(e.target===overlay)closeApp()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&overlay.classList.contains("open"))closeApp()});
-const desktop=$("#desktop"),dots=document.querySelectorAll(".page-dots span");
-desktop.addEventListener("scroll",()=>{const p=Math.round(desktop.scrollLeft/Math.max(1,desktop.clientWidth));dots.forEach((d,i)=>d.classList.toggle("active",i===p))},{passive:true});
+
+// 手机桌面：使用明确的左右滑动手势切页，避免部分 Android 浏览器不触发横向原生滚动。
+const desktop=$("#desktop"), dots=document.querySelectorAll("#pageDots span");
+let touchStartX=0,touchStartY=0,touchStartAt=0;
+function currentPage(){return Math.round(desktop.scrollLeft/Math.max(1,desktop.clientWidth))}
+function goPage(index){
+ const target=Math.max(0,Math.min(1,index));
+ desktop.scrollTo({left:target*desktop.clientWidth,behavior:"smooth"});
+ dots.forEach((d,i)=>d.classList.toggle("active",i===target));
+}
+desktop.addEventListener("touchstart",e=>{
+ if(document.body.classList.contains("app-open"))return;
+ const t=e.changedTouches[0];touchStartX=t.clientX;touchStartY=t.clientY;touchStartAt=Date.now();
+},{passive:true});
+desktop.addEventListener("touchend",e=>{
+ if(document.body.classList.contains("app-open"))return;
+ const t=e.changedTouches[0],dx=t.clientX-touchStartX,dy=t.clientY-touchStartY;
+ if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.15&&Date.now()-touchStartAt<900){
+   goPage(currentPage()+(dx<0?1:-1));
+ }
+},{passive:true});
+desktop.addEventListener("scroll",()=>{const p=currentPage();dots.forEach((d,i)=>d.classList.toggle("active",i===p))},{passive:true});
+document.querySelectorAll("[data-shortcut]").forEach(b=>b.addEventListener("click",()=>{
+ const names={phone:"电话",contacts:"联系人",notifications:"通知",browser:"浏览器"};
+ notify(`${names[b.dataset.shortcut]}功能后续接入`);
+}));
 function tick(){const d=new Date();$("#clock").textContent=d.toLocaleTimeString("zh-CN",{hour:"2-digit",minute:"2-digit",hour12:false});$("#dateText").textContent=`${d.getMonth()+1}月${d.getDate()}日 ${"日一二三四五六"[d.getDay()]}`}
 tick();setInterval(tick,30000);
-if("serviceWorker"in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("./sw.js?v=3").catch(()=>{});
+if("serviceWorker"in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("./sw.js?v=4").catch(()=>{});
