@@ -7,17 +7,17 @@
 <meta name="description" content="Only Us · 予你晴空">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="./styles.css?v=3">
+<link rel="stylesheet" href="./styles.css?v=4">
 <title>Only Us · 予你晴空</title>
 </head>
 <body>
 <main class="phone-shell">
   <header class="topbar"><span id="dateText"></span><span class="status">● 5G　▮▮▮　▰</span></header>
-  <section class="desktop" id="desktop">
+  <section class="desktop" id="desktop" aria-label="手机桌面">
     <div class="desktop-page">
       <section class="hero glass"><div><p class="eyebrow">ONLY US · OUR LITTLE WORLD</p><h1 id="clock">10:08</h1><p class="subline">今天也要好好生活，宝宝。</p></div><div class="moon">☾</div></section>
       <section class="ayu-card glass"><div class="ayu-photo"><img src="./assets/ayu-reference.jpg" alt="阿予形象参考"></div><div class="ayu-info"><div class="name-row"><strong>阿予</strong><span class="online-dot"></span><small>在线陪伴</small></div><p>宝宝，今天想先去哪里逛逛？</p></div><button class="round-button" data-app="chat" aria-label="呼叫阿予">♡</button></section>
-      <section class="section-heading"><div><span class="eyebrow">YOUR APPS</span><h2>我的小手机</h2></div><span class="page-hint">向左滑动 · 1 / 2</span></section>
+      <section class="section-heading"><div><span class="eyebrow">YOUR APPS</span><h2>我的小手机</h2></div><span class="page-hint">左右滑动 · 1 / 2</span></section>
       <section class="app-grid">
         <button class="app-tile" data-app="chat"><span class="app-icon blue">♡</span><b>聊天</b></button>
         <button class="app-tile" data-app="diary"><span class="app-icon cream">✎</span><b>手记</b></button>
@@ -37,8 +37,13 @@
       <div class="page-note glass">朋友圈也可以从聊天应用里的「朋友圈」标签进入。</div>
     </div>
   </section>
-  <div class="page-dots"><span class="active"></span><span></span></div>
-  <nav class="dock glass"><button data-app="chat" aria-label="聊天">♡</button><button data-app="diary" aria-label="手记">✎</button><button data-app="music" aria-label="音乐">♫</button><button data-app="chat" aria-label="阿予">☾</button></nav>
+  <div class="page-dots" id="pageDots"><span class="active"></span><span></span></div>
+  <nav class="dock glass" aria-label="快捷入口">
+    <button type="button" data-shortcut="phone" aria-label="电话"><span>☎</span><small>电话</small></button>
+    <button type="button" data-shortcut="contacts" aria-label="联系人"><span>♙</span><small>联系人</small></button>
+    <button type="button" data-shortcut="notifications" aria-label="通知"><span>♧</span><small>通知</small></button>
+    <button type="button" data-shortcut="browser" aria-label="浏览器"><span>◎</span><small>浏览器</small></button>
+  </nav>
 </main>
 <div class="app-overlay" id="appOverlay" aria-hidden="true">
   <section class="app-window" role="dialog" aria-modal="true">
@@ -47,6 +52,6 @@
   </section>
 </div>
 <div class="toast" id="toast" role="status"></div>
-<script src="./app.js?v=3"></script>
+<script src="./app.js?v=4"></script>
 </body>
 </html>
