@@ -17,3 +17,56 @@ button{font:inherit;color:inherit;border:0;cursor:pointer}.phone-shell{width:100
 body.app-open .desktop{visibility:hidden;pointer-events:none}body.app-open .page-dots,body.app-open .dock,body.app-open .topbar{visibility:hidden;pointer-events:none}
 @media(max-height:700px){.hero{min-height:112px}.hero h1{font-size:44px}.section-heading{margin-top:12px}.app-grid{gap:10px 8px}.quote-card{margin-top:12px}}
 @media(min-width:700px){.phone-shell{max-width:480px;margin:auto;border-left:1px solid #ffffff4d;border-right:1px solid #ffffff4d}.dock{max-width:440px}.app-window{max-width:480px;margin:auto;box-shadow:0 0 0 100vmax #38465d2e}.app-overlay{background:transparent}}
+/* v5：首页手机屏幕适配 */
+.desktop-page:first-child .section-heading h2,
+.desktop-page:first-child .section-heading .page-hint {
+  display: none !important;
+}
+
+.desktop-page:first-child {
+  padding: 6px 16px 8px;
+  overflow-y: hidden;
+}
+
+.hero {
+  min-height: 112px;
+  height: clamp(108px, 17vh, 140px);
+}
+
+.ayu-card {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.section-heading {
+  margin: 12px 4px 8px;
+}
+
+.app-grid {
+  gap: 10px 8px;
+}
+
+.app-icon {
+  width: clamp(50px, 14vw, 58px);
+  height: clamp(50px, 14vw, 58px);
+}
+
+.quote-card {
+  margin-top: 12px;
+  padding: 10px 13px;
+}
+
+@media (max-height: 700px) {
+  .hero {
+    height: 104px;
+    min-height: 104px;
+  }
+
+  .app-grid {
+    gap: 8px;
+  }
+
+  .quote-card {
+    margin-top: 8px;
+  }
+  }
