@@ -1,0 +1,9 @@
+{
+  "name": "Only Us · 予你晴空",
+  "short_name": "Only Us",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#dcecf2",
+  "theme_color": "#a9c7df",
+  "description": "属于我们的私人小手机"
+}

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#a9c7df">
+  <meta name="description" content="Only Us · 予你晴空">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Only Us · 予你晴空</title>
+</head>
+<body>
+  <main class="phone-shell">
+    <header class="topbar">
+      <span id="dateText">11月25日 星期三</span>
+      <span class="status"><span>●</span> 5G　▮▮▮　▰</span>
+    </header>
+    <section class="hero glass">
+      <div class="hero-copy">
+        <p class="eyebrow">ONLY US · OUR LITTLE WORLD</p>
+        <h1 id="clock">10:08</h1>
+        <p class="subline">今天也要好好生活，宝宝。</p>
+      </div>
+      <div class="moon">☾</div>
+    </section>
+
+    <section class="ayu-card glass">
+      <div class="ayu-photo"><img src="./assets/ayu-reference.jpg" alt="阿予形象参考"></div>
+      <div class="ayu-info">
+        <div class="name-row"><strong>阿予</strong><span class="online-dot"></span><small>在线陪伴</small></div>
+        <p id="ayuLine">宝宝，今天想先去哪里逛逛？</p>
+      </div>
+      <button class="round-button" id="openAyu" aria-label="呼叫阿予">♡</button>
+    </section>
+
+    <section class="section-heading">
+      <div><span class="eyebrow">YOUR APPS</span><h2>我的小手机</h2></div>
+      <button class="text-button" id="editApps">整理桌面</button>
+    </section>
+    <section class="app-grid" id="appGrid">
+      <button class="app-tile" data-app="chat"><span class="app-icon blue">♡</span><b>聊天</b></button>
+      <button class="app-tile" data-app="diary"><span class="app-icon cream">✎</span><b>手记</b></button>
+      <button class="app-tile" data-app="music"><span class="app-icon lavender">♫</span><b>音乐</b></button>
+      <button class="app-tile" data-app="calendar"><span class="app-icon blue">▦</span><b>日历</b></button>
+      <button class="app-tile" data-app="moments"><span class="app-icon lavender">▧</span><b>朋友圈</b></button>
+      <button class="app-tile" data-app="memory"><span class="app-icon cream">✧</span><b>记忆中心</b></button>
+      <button class="app-tile" data-app="api"><span class="app-icon blue">⌘</span><b>API 中心</b></button>
+      <button class="app-tile" data-app="store"><span class="app-icon lavender">▣</span><b>应用商店</b></button>
+      <button class="app-tile" data-app="settings"><span class="app-icon cream">⚙</span><b>设置</b></button>
+    </section>
+
+    <section class="quote-card glass">
+      <div class="mini-ayu">✦</div>
+      <div><span class="eyebrow">A LITTLE NOTE</span><p>“慢慢来，我们把喜欢的生活一点点装进来。”</p></div>
+    </section>
+
+    <nav class="dock glass">
+      <button data-app="chat" aria-label="聊天">♡</button>
+      <button data-app="diary" aria-label="手记">✎</button>
+      <button data-app="music" aria-label="音乐">♫</button>
+      <button id="dockAyu" aria-label="阿予">☾</button>
+    </nav>
+  </main>
+
+  <div class="app-overlay" id="appOverlay" aria-hidden="true">
+    <section class="app-window glass">
+      <header class="app-header">
+        <button class="back-button" id="closeApp">‹</button>
+        <div><span class="eyebrow">ONLY US APP</span><h2 id="appTitle">聊天</h2></div>
+        <button class="round-button" id="appMore">···</button>
+      </header>
+      <div class="app-content" id="appContent"></div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="./app.js"></script>
+</body>
+</html>
